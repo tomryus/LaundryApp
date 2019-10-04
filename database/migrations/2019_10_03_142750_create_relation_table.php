@@ -33,9 +33,9 @@ class CreateRelationTable extends Migration
             $table->foreign('outlet_id')->reference('id')->on('outlets');
         });
         Schema::table('detail_transactions', function (Blueprint $table) {
-            $table->foreign('laundry_price_id');
-            $table->foreign('laundry_type_id');
-            $table->foreign('transaction_id');
+            $table->foreign('laundry_price_id')->references('id')->on('laundry_prices');
+            $table->foreign('laundry_type_id')->references('id')->on('laundry_types');
+            $table->foreign('transaction_id')->references('id')->on('transactions');
 
         });
 
@@ -48,6 +48,12 @@ class CreateRelationTable extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+            
+        });
+        Schema::table('users', function (Blueprint $table) {
+            
+        });
         Schema::dropIfExists('relation');
     }
 }
