@@ -15,9 +15,9 @@ class CreateDetailTransactionsTable extends Migration
     {
         Schema::create('detail_transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('transaction_id')->nullable();
-            $table->unsignedBigInteger('laundry_price_id')->nullable();
-            $table->unsignedBigInteger('laundry_type_id')->nullable();
+            $table->BigInteger('transaction_id')->nullable()->unsigned();
+            $table->BigInteger('laundry_price_id')->nullable()->unsigned();
+            $table->BigInteger('laundry_type_id')->nullable()->unsigned();
             $table->integer('qty');
             $table->integer('price');
             $table->integer('subtotal');

@@ -21,7 +21,7 @@ class CreateCustomersTable extends Migration
             $table->string('address');
             $table->string('point');
             $table->string('deposit');
-            $table->unsignedBigInteger('courier_id')->unsigned()->nullable();
+            $table->BigInteger('courier_id')->unsigned()->nullable();
             $table->string('phone');
             $table->softDeletes();
             $table->timestamps();

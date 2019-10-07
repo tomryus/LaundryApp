@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('photo')->nullable();
             $table->string('api_token')->nullable();
             $table->rememberToken();
-            $table->unsignedBigInteger('outlet_id')->nullable();
+            $table->bigInteger('outlet_id')->unsigned()->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

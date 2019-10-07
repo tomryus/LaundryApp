@@ -14,28 +14,27 @@ class CreateRelationTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign('outlet_id')->references('id')->on('outlets');
+            $table->foreign('outlet_id')->references('id')->on('outlets')->onDelete('cascade')->onUpdate('cascade');
         });
-
         Schema::table('customers', function (Blueprint $table) {
-            $table->foreign('courier_id')->references('id')->on('users');
+            $table->foreign('courier_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
         Schema::table('expenses', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
         Schema::table('laundry_prices', function (Blueprint $table) {
-            $table->foreign('laundry_type_id')->references('id')->on('laundry_types');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('laundry_type_id')->references('id')->on('laundry_types')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
-        Schema::table('transaction', function (Blueprint $table) {
-            $table->foreign('courier_id')->references('id')->on('users');
-            $table->foreign('customer_id')->reference('id')->on('customers');
-            $table->foreign('outlet_id')->reference('id')->on('outlets');
+        Schema::table('transactions', function (Blueprint $table) {
+            $table->foreign('courier_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
         Schema::table('detail_transactions', function (Blueprint $table) {
-            $table->foreign('laundry_price_id')->references('id')->on('laundry_prices');
-            $table->foreign('laundry_type_id')->references('id')->on('laundry_types');
-            $table->foreign('transaction_id')->references('id')->on('transactions');
+            $table->foreign('laundry_price_id')->references('id')->on('laundry_prices')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('laundry_type_id')->references('id')->on('laundry_types')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade')->onUpdate('cascade');
 
         });
 
@@ -48,12 +47,6 @@ class CreateRelationTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            
-        });
-        Schema::table('users', function (Blueprint $table) {
-            
-        });
-        Schema::dropIfExists('relation');
+        
     }
 }

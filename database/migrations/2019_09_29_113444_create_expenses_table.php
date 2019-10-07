@@ -18,7 +18,7 @@ class CreateExpensesTable extends Migration
             $table->string('description');
             $table->integer('price');
             $table->string('note')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable()->unsigned();
+            $table->BigInteger('user_id')->nullable()->unsigned();
             $table->softDeletes();
             $table->timestamps();
         });

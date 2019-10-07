@@ -17,9 +17,9 @@ class CreateLaundryPricesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('unit_type');
-            $table->unsignedBigInteger('laundry_type_id')->nullable();
+            $table->BigInteger('laundry_type_id')->nullable()->unsigned();
             $table->integer('price');
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->BigInteger('user_id')->nullable()->unsigned();
             $table->softDeletes();
             $table->timestamps();
         });
